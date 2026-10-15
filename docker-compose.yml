@@ -1,0 +1,25 @@
+
+services:
+  web:
+    image: ishabaral/python-docker-demo:2.0
+    ports:
+      - "5001:5001"
+    depends_on:
+      - api
+    volumes:
+      - web-data:/app/data
+    networks:
+      - demo-network
+
+  api:
+    image: ishabaral/python-docker-demo:2.0
+    command: python api.py
+    networks:
+      - demo-network
+
+networks:
+  demo-network:
+    driver: bridge
+
+volumes:
+  web-data:
