@@ -1,7 +1,7 @@
 
 services:
   web:
-    image: ishabaral/python-docker-demo:2.0
+    image: ishabaral/python-docker-demo:3.0
     ports:
       - "5001:5001"
     depends_on:
@@ -12,8 +12,10 @@ services:
       - demo-network
 
   api:
-    image: ishabaral/python-docker-demo:2.0
+    image: ishabaral/python-docker-demo:3.0
     command: python api.py
+    ports:
+      - "5002:5002"
     networks:
       - demo-network
 
@@ -23,3 +25,22 @@ networks:
 
 volumes:
   web-data:
+
+# -------------------------------------------------------------------------------------------------
+
+#  run using docker compose up --build
+
+# services:
+#   web:
+#     build: .
+#     command: python app.py
+#     ports:
+#       - "5001:5001"
+#     environment:
+#       API_URL: http://api:5002/
+
+#   api:
+#     build: .
+#     command: python api.py
+#     ports:
+#       - "5002:5002"

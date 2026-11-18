@@ -10,7 +10,7 @@ DATA_DIR = BASE_DIR / "data"
 COUNT_FILE = DATA_DIR / "count.txt"
 
 # API service address on the Docker Compose network
-API_URL = os.getenv("API_URL", "http://api:5002/")
+API_URL = os.getenv("API_URL", "http://api:5002/")  # while running locally without docker, set env API_URL to "http://localhost:5002/"
 
 
 @app.route("/")
